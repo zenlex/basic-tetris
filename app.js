@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
-  let squares = Array.from(document.querySelectorAll(".grid div"));
   const width = 10;
+  const height = 20;
+  const mgrid = document.getElementById("master-grid");
+  for (let i = 0; i < width * height; i++) {
+    mgrid.appendChild(document.createElement("div"));
+  }
+
+  let squares = Array.from(document.querySelectorAll(".grid div"));
+
   const ScoreDisplay = document.querySelector("#score");
   const StartBtn = document.querySelector("#start-button");
-  console.log(squares);
 
   //The Tetrominoes
   const l0Tetromino = [
@@ -75,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //draw the Tetromino
   function draw() {
-    console.log(theTetrominoes[random][currentRotation]);
     current.forEach((index) => {
       squares[currentPosition + index].classList.add("tetromino");
     });
